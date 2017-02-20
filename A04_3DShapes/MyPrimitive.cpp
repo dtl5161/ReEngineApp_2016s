@@ -110,14 +110,19 @@ void MyPrimitive::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivis
 	Init();
 
 	//Your code starts here
-	float fValue = 0.5f;
+	float fValue = 0.5f * a_fRadius;
 	//3--2
 	//|  |
 	//0--1
-	vector3 point0(-fValue, -fValue, fValue); //0
-	vector3 point1(fValue, -fValue, fValue); //1
-	vector3 point2(fValue, fValue, fValue); //2
-	vector3 point3(-fValue, fValue, fValue); //3
+	vector3 point0(-a_fRadius, 0, 0);
+	vector3 point1(a_fRadius, 0, 0);
+	vector3 point2(0, a_fHeight, 0);
+	vector3 point3(0, a_fHeight, 0);
+	vector3 point4(0, 0, 0); 
+	vector3 point5(0, 0, 0);
+	vector3 point6(-fValue, -0.5f, fValue);
+	vector3 point7(fValue, -0.5f, fValue);
+
 
 	AddQuad(point0, point1, point3, point2);
 
@@ -143,6 +148,10 @@ void MyPrimitive::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubd
 	vector3 point1(fValue, -fValue, fValue); //1
 	vector3 point2(fValue, fValue, fValue); //2
 	vector3 point3(-fValue, fValue, fValue); //3
+	vector3 point4(0, -0.5f, fValue);
+	vector3 point5(0, -0.5f, fValue);
+	vector3 point6(0, 0, fValue);
+	vector3 point7(0, 0, fValue);
 
 	AddQuad(point0, point1, point3, point2);
 

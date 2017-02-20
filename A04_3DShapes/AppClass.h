@@ -14,6 +14,19 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 class AppClass : public ReEngAppClass
 {
 	MyPrimitive* m_pPrimitive = nullptr;
+	MyPrimitive* m_pCube = nullptr;
+	MyPrimitive* m_pCone = nullptr;
+	MyPrimitive* m_pCylinder = nullptr;
+	MyPrimitive* m_pTube = nullptr;
+	MyPrimitive* m_pSphere = nullptr;
+	MyPrimitive* m_pTorus = nullptr;
+
+	matrix4 m_m4Cube;
+	matrix4 m_m4Cone;
+	matrix4 m_m4Cylinder;
+	matrix4 m_m4Tube;
+	matrix4 m_m4Sphere;
+	matrix4 m_m4Torus;
 public:
 	typedef ReEngAppClass super;
 	/*
