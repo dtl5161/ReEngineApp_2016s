@@ -14,7 +14,9 @@ class AppClass : public ReEngAppClass
 {
 public:
 	typedef ReEngAppClass super;
-
+	int m_nObjects;
+	PrimitiveClass* m_pSphere = nullptr;
+	matrix4* m_pMatrix = nullptr;
 	/*
 	USAGE: Constructor
 	ARGUMENTS: 

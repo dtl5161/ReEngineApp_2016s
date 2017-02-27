@@ -10,11 +10,15 @@ void AppClass::InitVariables(void)
 	m_m4Sun = IDENTITY_M4;
 	m_m4Earth = IDENTITY_M4;
 	m_m4Moon = IDENTITY_M4;
-
 	m_pSun = new PrimitiveClass();
 	m_pEarth = new PrimitiveClass();
 	m_pMoon = new PrimitiveClass();
-
+	distanceEarth = glm::translate(11.0f, 0.0f, 0.0f);
+	distanceMoon = glm::translate(2.0f, 0.0f, 0.0f);
+	Etop, Ebottom, Eleft = false;
+	Eright = true;
+	Mtop, Mbottom, Mleft = false;
+	Mright = true;
 	m_pSun->GenerateSphere(5.936f, 5, REYELLOW);
 	m_pEarth->GenerateTube(0.524f, 0.45f, 0.3f, 10, REBLUE);
 	m_pMoon->GenerateTube(0.524f * 0.27f, 0.45f * 0.27f, 0.3f * 0.27f, 10, REWHITE);
@@ -44,16 +48,147 @@ void AppClass::Update(void)
 	matrix4 rotateY = glm::rotate(IDENTITY_M4, 90.0f, vector3(0.0f, 1.0f, 0.0f));
 
 	//This matrices will hold the relative transformation of the Moon and the Earth
-	matrix4 distanceEarth = glm::translate(11.0f, 0.0f, 0.0f);
-	matrix4 distanceMoon = glm::translate(2.0f, 0.0f, 0.0f);
+	//matrix4 distanceEarth = glm::translate(11.0f, 0.0f, 0.0f);
+	//matrix4 distanceMoon = glm::translate(2.0f, 0.0f, 0.0f);
 #pragma endregion
 
 #pragma region YOUR CODE GOES HERE
 	//Calculate the position of the Earth
-	m_m4Earth = glm::rotate(IDENTITY_M4, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f));
+	if (distanceEarth[3].x >= 11.0f)
+	{
+		distanceEarth[3].x = 11.0f;
+	}
+	if (distanceEarth[3].z <= -11.0f)
+	{
+		distanceEarth[3].z = -11.0f;
+	}
+	if (distanceEarth[3].x <= -11.0f)
+	{
+		distanceEarth[3].x = -11.0f;
+	}
+	if (distanceEarth[3].z >= 11.0f)
+	{
+		distanceEarth[3].z = 11.0f;
+	}
+	if (distanceEarth[3].x >= 11.0f)
+	{
+		Eright = true;
+		Etop = false;
+		Ebottom = false;
+		Eleft = false;
+	}
+	if (distanceEarth[3].z <= -11.0f)
+	{
+		Ebottom = true;
+		Etop = false;
+		Eright = false;
+		Eleft = false;
+	}
+	if (distanceEarth[3].x <= -11.0f)
+	{
+		Eleft = true;
+		Etop = false;
+		Eright = false;
+		Ebottom = false;
+	}
+	if (distanceEarth[3].z >= 11.0f)
+	{
+		Etop = true;
+		Ebottom = false;
+		Eright = false;
+		Eleft = false;
+	}
+	if (Eright == true)
+	{
+		distanceEarth[3].x = distanceEarth[3].x - 0.00429424f;
+		distanceEarth[3].z = distanceEarth[3].z - 0.00429424f;
+	}
+	if (Ebottom == true)
+	{
+		distanceEarth[3].x = distanceEarth[3].x - 0.00429424f;
+		distanceEarth[3].z = distanceEarth[3].z + 0.00429424f;
+	}
+	if (Eleft == true)
+	{
+		distanceEarth[3].x = distanceEarth[3].x + 0.00429424f;
+		distanceEarth[3].z = distanceEarth[3].z + 0.00429424f;
+	}
+	if (Etop == true)
+	{
+		distanceEarth[3].x = distanceEarth[3].x + 0.00429424f;
+		distanceEarth[3].z = distanceEarth[3].z - 0.00429424f;
+	}
+	//move the moon
+	if (distanceMoon[3].x >= 2.0f)
+	{
+		distanceMoon[3].x = 2.0f;
+	}
+	if (distanceMoon[3].z <= -2.0f)
+	{
+		distanceMoon[3].z = -2.0f;
+	}
+	if (distanceMoon[3].x <= -2.0f)
+	{
+		distanceMoon[3].x = -2.0f;
+	}
+	if (distanceMoon[3].z >= 2.0f)
+	{
+		distanceMoon[3].z = 2.0f;
+	}
+	if (distanceMoon[3].x >= 2.0f)
+	{
+		Mright = true;
+		Mtop = false;
+		Mbottom = false;
+		Mleft = false;
+	}
+	if (distanceMoon[3].z <= -2.0f)
+	{
+		Mbottom = true;
+		Mtop = false;
+		Mright = false;
+		Mleft = false;
+	}
+	if (distanceMoon[3].x <= -2.0f)
+	{
+		Mleft = true;
+		Mtop = false;
+		Mright = false;
+		Mbottom = false;
+	}
+	if (distanceMoon[3].z >= 2.0f)
+	{
+		Mtop = true;
+		Mbottom = false;
+		Mright = false;
+		Mleft = false;
+	}
+	if (Mright == true)
+	{
+		distanceMoon[3].x = distanceMoon[3].x - 0.14285714f;
+		distanceMoon[3].z = distanceMoon[3].z - 0.14285714f;
+	}
+	if (Mbottom == true)
+	{
+		distanceMoon[3].x = distanceMoon[3].x - 0.14285714f;
+		distanceMoon[3].z = distanceMoon[3].z + 0.14285714f;
+	}
+	if (Mleft == true)
+	{
+		distanceMoon[3].x = distanceMoon[3].x + 0.14285714f;
+		distanceMoon[3].z = distanceMoon[3].z + 0.14285714f;
+	}
+	if (Mtop == true)
+	{
+		distanceMoon[3].x = distanceMoon[3].x + 0.14285714f;
+		distanceMoon[3].z = distanceMoon[3].z - 0.14285714f;
+	}
+	m_m4Earth = glm::rotate(distanceEarth, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+
 
 	//Calculate the position of the Moon
-	m_m4Moon = glm::rotate(IDENTITY_M4, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Moon = glm::rotate(distanceEarth * distanceMoon, m_fMoonTimer, vector3(0.0f, 1.0f, m_fMoonTimer));
+
 #pragma endregion
 
 #pragma region Print info

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F5D6D2E1-6FFD-402B-8EE3-DED4FE407028}</ProjectGuid>
+    <ProjectGuid>{6370D994-0D99-435F-96A8-E82FB2646BD2}</ProjectGuid>
     <RootNamespace>00_Sandbox</RootNamespace>
     <ProjectName>E06_Lerp</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>

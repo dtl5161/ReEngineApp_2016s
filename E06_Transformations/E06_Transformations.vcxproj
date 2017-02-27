@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0DAFBAF6-F5D3-4F5F-AF68-D26F64A7DD32}</ProjectGuid>
+    <ProjectGuid>{CFC5A13E-27EB-44AB-A562-CADF4D45A21C}</ProjectGuid>
     <RootNamespace>E06_Transformations</RootNamespace>
-    <ProjectName>E06_Transformations</ProjectName>
+    <ProjectName>E06_Tranformation</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
