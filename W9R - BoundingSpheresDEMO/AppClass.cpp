@@ -1,7 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
-	super::InitWindow("W9R - BoundingSpheresDEMO"); // Window Name
+	super::InitWindow("Sandbox"); // Window Name
 
 	// Set the clear color based on Microsoft's CornflowerBlue (default in XNA)
 	//if this line is in Init Application it will depend on the .cfg file, if it
@@ -23,7 +23,6 @@ void AppClass::InitVariables(void)
 		REAXISY);//What is up
 	//Load a model onto the Mesh manager
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
-	m_BB1 = new BoundingSphereClass(m_pMeshMngr->GetVertexList("Unikitty"));
 }
 
 void AppClass::Update(void)
@@ -54,20 +53,10 @@ void AppClass::Update(void)
 	//printf("FPS: %d            \r", nFPS);//print the Frames per Second
 	//Print info on the screen
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
+
+	m_pMeshMngr->Print("Selection: ");
+	m_pMeshMngr->PrintLine(m_pMeshMngr->GetInstanceGroupName(m_selection.first, m_selection.second), REYELLOW);
 	
-	m_pMeshMngr->Print("Radius:");
-	m_pMeshMngr->Print(std::to_string(m_BB1->m_fRadius), RERED);
-
-	m_pMeshMngr->Print("Center:( ");
-	m_pMeshMngr->Print(std::to_string(m_BB1->m_v3Center.x), RERED);
-
-	m_pMeshMngr->Print(" , ");
-	m_pMeshMngr->Print(std::to_string(m_BB1->m_v3Center.y), RERED);
-
-	m_pMeshMngr->Print(" , ");
-	m_pMeshMngr->Print(std::to_string(m_BB1->m_v3Center.z), RERED);
-	m_pMeshMngr->Print(")");
-
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->Print(std::to_string(nFPS), RERED);
 }

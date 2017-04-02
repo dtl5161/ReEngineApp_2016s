@@ -7,14 +7,12 @@ Date: 2015/09 (Last Modified on: 15/11)
 
 #include "RE\ReEngAppClass.h"
 #include <SFML\Graphics.hpp>
-#include "BoundingSphereClass.h"
 
 using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 
 class AppClass : public ReEngAppClass
 {
 public:
-	BoundingSphereClass* m_BB1;
 	typedef ReEngAppClass super;
 	int m_nObjects;
 	PrimitiveClass* m_pSphere = nullptr;

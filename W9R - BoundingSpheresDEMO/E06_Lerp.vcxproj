@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F5D6D2E1-6FFD-402B-8EE3-DED4FE407028}</ProjectGuid>
+    <ProjectGuid>{6370D994-0D99-435F-96A8-E82FB2646BD2}</ProjectGuid>
     <RootNamespace>00_Sandbox</RootNamespace>
-    <ProjectName>W9R - BoundingSpheresDEMO</ProjectName>
+    <ProjectName>E06_Lerp</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,13 +107,11 @@ xcopy "$(SolutionDir)include\RE\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Com
   <ItemGroup>
     <ClCompile Include="AppClass.cpp" />
     <ClCompile Include="AppClassControls.cpp" />
-    <ClCompile Include="BoundingSphereClass.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\res\Resource.h" />
     <ClInclude Include="AppClass.h" />
-    <ClInclude Include="BoundingSphereClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\res\BTO.rc" />
