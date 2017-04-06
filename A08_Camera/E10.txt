@@ -1,0 +1,3 @@
+Daniel Lowery (all by me)
+
+I avoided gimball lock by rotating the camera around the objects instead of just rotating the camera itself.
