@@ -25,21 +25,13 @@ void AppClass::Update(void)
 	if (m_bFPC == true)
 		CameraRotation();
 
-	quaternion myQuatX;
-	quaternion myQuatY;
-	quaternion myQuatZ;
-
 	//Rotation matrices
 	matrix4 rotX = glm::rotate(IDENTITY_M4, m_v3Orientation.x, REAXISX);
 	matrix4 rotY = glm::rotate(IDENTITY_M4, m_v3Orientation.y, REAXISY);
 	matrix4 rotZ = glm::rotate(IDENTITY_M4, m_v3Orientation.z, REAXISZ);
 
-	myQuatX = quaternion(cos(m_v3Orientation.x), sin(m_v3Orientation.x), 0.0f, 0.0f);
-	myQuatY = quaternion(cos(m_v3Orientation.y), 0.0f, sin(m_v3Orientation.y), 0.0f);
-	myQuatZ = quaternion(cos(m_v3Orientation.z), 0.0f, 0.0f, sin(m_v3Orientation.z));
-	quaternion rotQuat = myQuatZ * myQuatY * myQuatX;
 	//linear combination
-	m_mToWorld = ToMatrix4(rotQuat);
+	m_mToWorld = rotX * rotY * rotZ;
 
 	//Setting the model matrix
 	m_pMeshMngr->SetModelMatrix(m_mToWorld, "Steve");
@@ -48,7 +40,7 @@ void AppClass::Update(void)
 	m_pMeshMngr->AddInstanceToRenderList("Steve");
 
 	int nFPS = m_pSystem->GetFPS();
-	m_pMeshMngr->PrintLine("");
+	m_pMeshMngr->PrintLine("");//Add a line on top
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
 	m_pMeshMngr->Print("X:", REYELLOW);
 	m_pMeshMngr->PrintLine(std::to_string(m_v3Orientation.x), RERED);

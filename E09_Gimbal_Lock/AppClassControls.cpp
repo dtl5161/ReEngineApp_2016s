@@ -28,18 +28,18 @@ void AppClass::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 	{
-		if (!bModifier) m_v3Orientation.x += 0.01f;
-		else m_v3Orientation.x -= 0.01f;
+		if (!bModifier) m_v3Orientation.x += 1.0f;
+		else m_v3Orientation.x -= 1.0f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
 	{
-		if (!bModifier) m_v3Orientation.y += 0.01f;
-		else m_v3Orientation.y -= 0.01f;
+		if (!bModifier) m_v3Orientation.y += 1.0f;
+		else m_v3Orientation.y -= 1.0f;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
-		if (!bModifier) m_v3Orientation.z += 0.01f;
-		else m_v3Orientation.z -= 0.01f;
+		if (!bModifier) m_v3Orientation.z += 1.0f;
+		else m_v3Orientation.z -= 1.0f;
 	}
 
 #pragma region Camera Positioning

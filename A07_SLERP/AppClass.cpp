@@ -47,28 +47,10 @@ void AppClass::Update(void)
 	float fEarthHalfRevTime = 0.5f * m_fDay; // Move for Half a day
 	float fMoonHalfOrbTime = 14.0f * m_fDay; //Moon's orbit is 28 earth days, so half the time for half a route
 
-	//setting up quats
-	glm::quat earthQuat1 = glm::quat(vector3(0.0f, 0.0f, 0.0f));
-	glm::quat earthQuat2 = glm::quat(vector3(0.0f, 359.0f, 0.0f));
-	glm::quat moonQuat1 = glm::quat(vector3(0.0f, 0.0f, 0.0f));
-	glm::quat moonQuat2 = glm::quat(vector3(0.0f, -359.0f, 0.0f));
-
-	//slerp
-	
-
-	//mat4s
-	matrix4 m4Earth = glm::toMat4(glm::mix(earthQuat1, earthQuat2, (float)fRunTime / 10));
-	matrix4 step1 = glm::translate(vector3(11.0f,0.0f,0.0f));
-	matrix4 earthPos = m4Earth * step1;
-	matrix4 m4Moon = earthPos;
-	matrix4 step2 = glm::translate(vector3(2.0f, 0.0f, 0.0f));
-	matrix4 m4Moon2 = glm::toMat4(glm::mix(earthQuat1, earthQuat2, (float)fRunTime / 5));
-	//m4Moon = m4Moon * m4Earth;
-	matrix4 moonPos = m4Moon * m4Moon2 * step2;
 	//Setting the matrices
 	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
-	m_pMeshMngr->SetModelMatrix(earthPos, "Earth");
-	m_pMeshMngr->SetModelMatrix(moonPos, "Moon");
+	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Earth");
+	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Moon");
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
@@ -76,30 +58,12 @@ void AppClass::Update(void)
 	static int nEarthOrbits = 0;
 	static int nEarthRevolutions = 0;
 	static int nMoonOrbits = 0;
-	double check = fRunTime;
-	static int tick1 = 1;
-	static int tick2 = 1;
-	static int tick3 = 1;
-	if(check/(12*tick1) >= 1)
-	{
-		nEarthOrbits++;
-		tick1++;
-	}
-	if (check / (0.033 * tick2) >= 1)
-	{
-		nEarthRevolutions++;
-		tick2++;
-	}
-	if (check / (5.5 * tick3) >= 1)
-	{
-		nMoonOrbits++;
-		tick3++;
-	}
 
 	//Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();
 
 	//Print info on the screen
+	m_pMeshMngr->PrintLine("");//Add a line on top
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
 	
 	m_pMeshMngr->Print("Time:");
@@ -143,7 +107,7 @@ void AppClass::Display(void)
 	}
 	
 	m_pMeshMngr->Render(); //renders the render list
-	m_pMeshMngr->ClearRenderList(); //Reset the Render list after render
+
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }
 

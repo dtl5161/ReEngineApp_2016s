@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{24A24B2C-9A83-4BEE-BD92-8F78BD959398}</ProjectGuid>
+    <ProjectGuid>{1526B5D0-627C-4057-91F9-4D7289CB8CFE}</ProjectGuid>
     <RootNamespace>E09_Gimbal_Lock</RootNamespace>
     <ProjectName>E09_Gimbal_Lock</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
